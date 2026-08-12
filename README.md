@@ -1,3 +1,6 @@
 ﻿# Aula01Variaveis
 
- ##Teste de Edição
+Este projeto é dedicado ao estudo inicial de variáveis
+
+
+
