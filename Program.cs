@@ -9,37 +9,60 @@ namespace Aula01Variaveis
     {
         static void Main(string[] args)
         {
-            // ConcatenarPalavras();
-            // CalcularMedia();
-            // CalcularTabuada();
-            VerificarAulaEtec();
+            Console.WriteLine("Observe o menu abaixo e digite o número referente a opção desejada: ");
+            Console.WriteLine("1 - Concatenar Palavras");
+            Console.WriteLine("2 - Verificar Dias da Semana");
+            Console.WriteLine("3 - Calcular Média");
+            Console.WriteLine("4 - Calcular Tabuada");
+
+            int opcaoEscolhida = int.Parse(Console.ReadLine());
+
+            switch (opcaoEscolhida)
+            {
+                case 1:
+                    ConcatenarPalavras();
+                    break;
+
+                case 2:
+                    CalcularMedia();
+                    break;
+
+                case 3:
+                    CalcularTabuada();
+                    break;
+
+                case 4:
+                    VerificarAulaEtec();
+                    break;
+
+            }
         }
 
         public static void VerificarAulaEtec()
-        
+
         {
             Console.WriteLine("Digite a data: ");
             DateTime data = DateTime.Parse(Console.ReadLine());
 
             if (data.DayOfWeek == DayOfWeek.Saturday || data.DayOfWeek == DayOfWeek.Sunday)
-            Console.WriteLine("Final de semana! Hoje não tem aula! Revisarei exercícios.");
+                Console.WriteLine("Final de semana! Hoje não tem aula! Revisarei exercícios.");
             else
-            Console.WriteLine("Dia de semana! Bora pra Etec!");
+                Console.WriteLine("Dia de semana! Bora pra Etec!");
         }
 
         public static void CalcularTabuada()
         {
-           Console.WriteLine("Digite a tabuada que deseja calcular:");
-           int tabuada = int.Parse(Console.ReadLine());
-           int contador = 0;
+            Console.WriteLine("Digite a tabuada que deseja calcular:");
+            int tabuada = int.Parse(Console.ReadLine());
+            int contador = 0;
 
-           while (contador <= 10)
-           {
-            string mensagem = string.Format("{0} X {1} = {2}", tabuada, contador, tabuada * contador);
+            while (contador <= 10)
+            {
+                string mensagem = string.Format("{0} X {1} = {2}", tabuada, contador, tabuada * contador);
 
-            Console.WriteLine(mensagem);
-            contador++;
-           }
+                Console.WriteLine(mensagem);
+                contador++;
+            }
 
 
 
