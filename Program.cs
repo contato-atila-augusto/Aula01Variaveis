@@ -7,13 +7,15 @@ namespace Aula01Variaveis
 {
     public class Program
     {
-        static void Main(string[] args)
+       static void Main(string[] args)
         {
             Console.WriteLine("Observe o menu abaixo e digite o número referente a opção desejada: ");
             Console.WriteLine("1 - Concatenar Palavras");
             Console.WriteLine("2 - Verificar Dias da Semana");
             Console.WriteLine("3 - Calcular Média");
             Console.WriteLine("4 - Calcular Tabuada");
+            Console.WriteLine("5 - Detalhar Data");
+            Console.WriteLine("6 - Calcular Desconto INSS");
 
             int opcaoEscolhida = int.Parse(Console.ReadLine());
 
@@ -24,20 +26,27 @@ namespace Aula01Variaveis
                     break;
 
                 case 2:
-                    CalcularMedia();
-                    break;
-
-                case 3:
-                    CalcularTabuada();
-                    break;
-
-                case 4:
                     VerificarAulaEtec();
                     break;
 
+                case 3:
+                    CalcularMedia();
+                    break;
+
+                case 4:
+                    CalcularTabuada();
+                    break;
+
+                case 5:
+                    DetalharData();
+                    break;
+
+                case 6:
+                    CalcularDescontoINSS();
+                    break;
             }
         }
-
+        
         public static void VerificarAulaEtec()
 
         {
@@ -106,6 +115,57 @@ namespace Aula01Variaveis
 
             string cabecalho = string.Format("{0:dddd}, {0:dd} de {0:MMMM} de {0:yy} - {0:HH:mm:ss}", DateTime.Now);
             Console.WriteLine(cabecalho);
+        }
+
+        public static void DetalharData()
+        {
+            Console.WriteLine("Digite uma data:");
+            DateTime data = DateTime.Parse(Console.ReadLine());
+
+            string diaSemana = data.ToString("dddd");
+            string mes = data.ToString("MMMM");
+
+            Console.WriteLine($"Dia da semana: {diaSemana}");
+            Console.WriteLine($"Mês: {mes}");
+
+            if (data.DayOfWeek == DayOfWeek.Sunday)
+            {
+                Console.WriteLine($"Hora atual: {DateTime.Now:HH:mm}");
+            }
+        }
+
+        public static void CalcularDescontoINSS()
+        {
+            Console.WriteLine("Digite o valor do salário:");
+            decimal salario = decimal.Parse(Console.ReadLine());
+
+            decimal valorINSS;
+
+            if (salario <= 1621.00m)
+            {
+                valorINSS = salario * 0.075m;
+            }
+            else if (salario <= 2902.84m)
+            {
+                valorINSS = salario * 0.09m - 24.32m;
+            }
+            else if (salario <= 4354.27m)
+            {
+                valorINSS = salario * 0.12m - 111.40m;
+            }
+            else if (salario <= 8475.55m)
+            {
+                valorINSS = salario * 0.14m - 198.49m;
+            }
+            else
+            {
+                valorINSS = 8475.55m * 0.14m - 198.49m;
+            }
+
+            decimal salarioComDesconto = salario - valorINSS;
+
+            Console.WriteLine($"Valor do INSS: {valorINSS:C2}");
+            Console.WriteLine($"Salário após desconto do INSS: {salarioComDesconto:C2}");
         }
     }
 }
